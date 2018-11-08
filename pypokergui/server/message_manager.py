@@ -43,8 +43,8 @@ def broadcast_start_game(handler, game_manager, sockets):
     # broadcast message to ai by invoking proper callback method
     game_info = _gen_game_info(game_manager)
     for uuid, player in game_manager.ai_players.items():
-        player.receive_game_start_message(game_info)
         player.set_uuid(uuid)
+        player.receive_game_start_message(game_info)
 
 def _gen_game_info(game_manager):
     seats = game_manager.latest_messages[0][1]["message"]["seats"]
